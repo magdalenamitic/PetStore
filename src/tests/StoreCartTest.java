@@ -25,23 +25,7 @@ import pages.SignInPage;
 import pages.StoreItemPage;
 import utils.ExcelUtils;
 
-public class StoreCartTest {
-
-	private WebDriver driver;
-	private Properties locators;
-	private WebDriverWait waiter;
-
-	@BeforeClass
-	public void setup() throws FileNotFoundException, IOException {
-		System.setProperty("webdriver.chrome.driver", "driver-lib\\chromedriver.exe");
-		this.driver = new ChromeDriver();
-		this.locators = new Properties();
-		locators.load(new FileInputStream("config/config.properties"));
-		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-	}
-
-	
+public class StoreCartTest extends TestTemplate {
 	@Test (priority=1)
 	public void storeAddToCartTest() throws InterruptedException {
 		StoreItemPage sip = new StoreItemPage(driver, locators, waiter);
@@ -137,11 +121,4 @@ public class StoreCartTest {
 		Assert.assertTrue(cp.verifyItemsSubTotal(), "Failed 'verifyItemsSubTotal'");
 	
 	}
-
-
-	@AfterClass
-	public void afterClass() {
-		this.driver.close();
-	}
-
 }

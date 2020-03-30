@@ -19,29 +19,12 @@ import pages.PetStoreMenuPage;
 import pages.SignInPage;
 import utils.ExcelUtils;
 
-public class SignInTest {
-	
-	private WebDriver driver;
-	private Properties locators;
-	private WebDriverWait waiter;
-
-	@BeforeClass
-	public void setup() throws FileNotFoundException, IOException {
-		System.setProperty("webdriver.chrome.driver", "driver-lib\\chromedriver.exe");
-		this.driver = new ChromeDriver();
-		this.locators =  new Properties();
-		locators.load(new FileInputStream("config/config.properties"));
-		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-	}
-
+public class SignInTest extends TestTemplate {
 	@Test
 	public void storeSignInTest() throws InterruptedException {
 		driver.navigate().to(this.locators.getProperty("store_menu_page_url"));
 		
 		SoftAssert sa = new SoftAssert();
-		
-		
 		SignInPage sp = new SignInPage(driver, locators, waiter);
 		
 		sp.storeSignInClick();
@@ -72,12 +55,4 @@ public class SignInTest {
 		sa.assertAll();
 
 	}
-
-	
-	
-	@AfterClass
-	public void afterClass() {
-		this.driver.close();
-	}
-
 }

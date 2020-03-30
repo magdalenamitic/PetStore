@@ -20,27 +20,12 @@ import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.PetStoreMenuPage;
 
-public class PetStoreMenuTest {
-	private WebDriver driver;
-	private Properties locators;
-	private WebDriverWait waiter;
-
-	@BeforeClass
-	public void setup() throws FileNotFoundException, IOException {
-		System.setProperty("webdriver.chrome.driver", "driver-lib\\chromedriver.exe");
-		this.driver = new ChromeDriver();
-		this.locators =  new Properties();
-		locators.load(new FileInputStream("config/config.properties"));
-		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-	}
-
+public class PetStoreMenuTest extends TestTemplate {
 	@Test
 	public void petStoreMenuVerifyURLStatusTest() throws InterruptedException {
 		driver.navigate().to(this.locators.getProperty("store_menu_page_url"));
 		
 		SoftAssert sa = new SoftAssert();
-		
 		
         PetStoreMenuPage psmp = new PetStoreMenuPage(driver, locators, waiter);
 		
@@ -50,7 +35,6 @@ public class PetStoreMenuTest {
 		sa.assertTrue(psmp.verifySignInURLStatus(), "Failed 'verifySignInURLStatus'"); 
 
 		sa.assertAll();
-
 	}
 
 	@Test
@@ -58,14 +42,12 @@ public class PetStoreMenuTest {
 		driver.navigate().to(this.locators.getProperty("store_menu_page_url"));
 		
 		SoftAssert sa = new SoftAssert();
-	
 
 		PetStoreMenuPage psmp = new PetStoreMenuPage(driver, locators, waiter);
 
 		sa.assertTrue(psmp.verifyStoreMenuLeftURLPage(), "Failed 'verifyStoreMenuLeftURLPage'");
 		sa.assertTrue(psmp.verifyStoreMenuTopURLPage(), "Failed 'verifyStoreMenuTopURLPage'");
 		sa.assertTrue(psmp.verifyStoreMenuImgURLPage(), "Failed 'verifyStoreMenuImgURLPage'");
-		
 		
 		sa.assertAll();
 	}
@@ -74,18 +56,8 @@ public class PetStoreMenuTest {
 	@Test
 	public void signInPageTest() throws InterruptedException {
 		driver.navigate().to(this.locators.getProperty("store_menu_page_url"));
-		
-		
-	
-
 		PetStoreMenuPage psmp = new PetStoreMenuPage(driver, locators, waiter);
 		Assert.assertTrue(psmp.verifySignInPage());
 	}
 	
-	
-	
-	@AfterClass
-	public void afterClass() {
-		this.driver.close();
-	}
 }

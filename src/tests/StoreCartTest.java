@@ -120,6 +120,4 @@ public class StoreCartTest extends TestTemplate {
 		cp.clickCartLink();
 		Assert.assertTrue(cp.verifyItemsSubTotal(), "Failed 'verifyItemsSubTotal'");
 	}
-	
-	//test commit
 }

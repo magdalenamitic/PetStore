@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="38441" started-at="2020-03-30T17:55:11Z" finished-at="2020-03-30T17:55:49Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="38441" started-at="2020-03-30T17:55:11Z" finished-at="2020-03-30T17:55:49Z">
+      <class name="tests.StoreCartTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:tests.StoreCartTest@475530b9]" name="setup" is-config="true" duration-ms="10437" started-at="2020-03-30T17:55:11Z" finished-at="2020-03-30T17:55:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="storeAddToCartTest()[pri:1, instance:tests.StoreCartTest@475530b9]" name="storeAddToCartTest" duration-ms="7625" started-at="2020-03-30T17:55:21Z" finished-at="2020-03-30T17:55:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storeAddToCartTest -->
+        <test-method status="PASS" signature="storeCookieCartTest()[pri:2, instance:tests.StoreCartTest@475530b9]" name="storeCookieCartTest" duration-ms="5779" started-at="2020-03-30T17:55:29Z" finished-at="2020-03-30T17:55:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storeCookieCartTest -->
+        <test-method status="PASS" signature="storeCartPriceTest()[pri:3, instance:tests.StoreCartTest@475530b9]" name="storeCartPriceTest" duration-ms="6248" started-at="2020-03-30T17:55:34Z" finished-at="2020-03-30T17:55:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storeCartPriceTest -->
+        <test-method status="PASS" signature="storeCartSubTotalTest()[pri:4, instance:tests.StoreCartTest@475530b9]" name="storeCartSubTotalTest" duration-ms="8195" started-at="2020-03-30T17:55:41Z" finished-at="2020-03-30T17:55:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- storeCartSubTotalTest -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:tests.StoreCartTest@475530b9]" name="afterClass" is-config="true" duration-ms="136" started-at="2020-03-30T17:55:49Z" finished-at="2020-03-30T17:55:49Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- tests.StoreCartTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

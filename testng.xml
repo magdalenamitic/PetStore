@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pet Store">
+    <test name="Pet Store Test">
+         <classes>
+             <class name="tests.EnterStoreTest"/>
+             <class name="tests.PetStoreMenuTest"/>
+             <class name="tests.RegistrationTest"/>
+             <class name="tests.SignInTest"/>
+             <class name="tests.StoreCartTest"/>
+             <class name="tests.TestTemplate"/>
+          </classes>
+     </test> <!-- PetStoreTest -->
+</suite> <!-- PetStore -->

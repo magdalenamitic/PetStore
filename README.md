@@ -1,8 +1,8 @@
 # PetStore
 PetStore project is used for testing the functionality of the site
 
-Target URL: ``https://petstore.octoperf.com/``
-Target Browser: Chrome
+Target URL: ``https://petstore.octoperf.com/``<br>
+Target Browser: Chrome<br>
 Browser version: 80.0.3987.149
 
 ### What was tested

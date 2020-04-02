@@ -21,10 +21,10 @@ public class EnterStoreTest extends TestTemplate {
 	@Test
 	public void enterStoreTest() throws InterruptedException {
 		driver.navigate().to(this.locators.getProperty("home_page_url"));
-		
+
 		HomePage hp = new HomePage(driver, locators, waiter);
 		hp.clickStoreLink();
 
-		Assert.assertTrue(hp.enteredStore());		
+		Assert.assertTrue(hp.enteredStore());
 	}
 }

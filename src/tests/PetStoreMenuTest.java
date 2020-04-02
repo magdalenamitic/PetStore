@@ -24,15 +24,15 @@ public class PetStoreMenuTest extends TestTemplate {
 	@Test
 	public void petStoreMenuVerifyURLStatusTest() throws InterruptedException {
 		driver.navigate().to(this.locators.getProperty("store_menu_page_url"));
-		
+
 		SoftAssert sa = new SoftAssert();
-		
-        PetStoreMenuPage psmp = new PetStoreMenuPage(driver, locators, waiter);
-		
-		sa.assertTrue(psmp.verifyStoreMenuLeftURLStatus(), "Failed 'verifyStoreMenuLeftURLStatus'"); 
-		sa.assertTrue(psmp.verifyStoreMenuImgURLStatus(), "Failed 'verifyStoreMenuImgURLStatus'"); 
-		sa.assertTrue(psmp.verifyStoreMenuTopURLStatus(), "Failed 'verifyStoreMenuTopURLStatus'"); 
-		sa.assertTrue(psmp.verifySignInURLStatus(), "Failed 'verifySignInURLStatus'"); 
+
+		PetStoreMenuPage psmp = new PetStoreMenuPage(driver, locators, waiter);
+
+		sa.assertTrue(psmp.verifyStoreMenuLeftURLStatus(), "Failed 'verifyStoreMenuLeftURLStatus'");
+		sa.assertTrue(psmp.verifyStoreMenuImgURLStatus(), "Failed 'verifyStoreMenuImgURLStatus'");
+		sa.assertTrue(psmp.verifyStoreMenuTopURLStatus(), "Failed 'verifyStoreMenuTopURLStatus'");
+		sa.assertTrue(psmp.verifySignInURLStatus(), "Failed 'verifySignInURLStatus'");
 
 		sa.assertAll();
 	}
@@ -40,7 +40,7 @@ public class PetStoreMenuTest extends TestTemplate {
 	@Test
 	public void petStoreMenuVerifyURLPageTest() throws InterruptedException {
 		driver.navigate().to(this.locators.getProperty("store_menu_page_url"));
-		
+
 		SoftAssert sa = new SoftAssert();
 
 		PetStoreMenuPage psmp = new PetStoreMenuPage(driver, locators, waiter);
@@ -48,10 +48,9 @@ public class PetStoreMenuTest extends TestTemplate {
 		sa.assertTrue(psmp.verifyStoreMenuLeftURLPage(), "Failed 'verifyStoreMenuLeftURLPage'");
 		sa.assertTrue(psmp.verifyStoreMenuTopURLPage(), "Failed 'verifyStoreMenuTopURLPage'");
 		sa.assertTrue(psmp.verifyStoreMenuImgURLPage(), "Failed 'verifyStoreMenuImgURLPage'");
-		
+
 		sa.assertAll();
 	}
-	
 
 	@Test
 	public void signInPageTest() throws InterruptedException {
@@ -59,5 +58,5 @@ public class PetStoreMenuTest extends TestTemplate {
 		PetStoreMenuPage psmp = new PetStoreMenuPage(driver, locators, waiter);
 		Assert.assertTrue(psmp.verifySignInPage());
 	}
-	
+
 }

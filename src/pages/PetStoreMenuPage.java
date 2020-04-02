@@ -35,49 +35,48 @@ public class PetStoreMenuPage extends Page {
 	public WebElement getStoreCategoryTitle() {
 		return this.driver.findElement(By.xpath(this.locators.getProperty("store_category_title")));
 	}
-	
+
 	public WebElement getStoreCategoryBackLink() {
 		return this.driver.findElement(By.xpath(this.locators.getProperty("store_category_back_link")));
 	}
-	
+
 	public WebElement getStoreLoginText() {
 		return this.driver.findElement(By.xpath(this.locators.getProperty("store_login_text")));
 	}
-	
+
 	public boolean verifyStoreMenuURLStatus(WebElement linkHolder, String tagName) {
 		boolean result = true;
-		
+
 		try {
 			List<WebElement> links = linkHolder.findElements(By.tagName(tagName));
-			
+
 			if (links.size() == 0) {
 				result = false;
 			}
-			
-			for (int i=0; i<links.size(); i++) {
+
+			for (int i = 0; i < links.size(); i++) {
 				String urlString = links.get(i).getAttribute("href");
 				if (this.verifyURLStatus(urlString) > 400) {
 					result = false;
 				}
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
 	}
-	
+
 	public boolean verifyStoreMenuLeftURLStatus() {
 		WebElement holder = this.getStoreMenuLeft();
 		return this.verifyStoreMenuURLStatus(holder, "a");
 	}
-	
+
 	public boolean verifyStoreMenuTopURLStatus() {
 		WebElement holder = this.getStoreMenuTop();
 		return this.verifyStoreMenuURLStatus(holder, "a");
 	}
-	
+
 	public boolean verifyStoreMenuImgURLStatus() {
 		WebElement holder = this.getStoreMenuImg();
 		return this.verifyStoreMenuURLStatus(holder, "area");
@@ -85,7 +84,7 @@ public class PetStoreMenuPage extends Page {
 
 	public boolean verifySignInURLStatus() {
 		boolean result = true;
-		
+
 		try {
 			WebElement link = this.getStoreSignIn();
 
@@ -93,141 +92,135 @@ public class PetStoreMenuPage extends Page {
 			if (this.verifyURLStatus(urlString) > 400) {
 				result = false;
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
 	}
 
 	public boolean validMenuNavigation(WebElement link) {
 		boolean result = true;
-		
+
 		try {
 			String urlString = link.getAttribute("href");
 			String urlCategoryName = this.getLastWordAfterCharacter(urlString, "=");
-			
+
 			link.click();
-			
+
 			WebElement categoryTitle = this.getStoreCategoryTitle();
 			if (!categoryTitle.getText().toUpperCase().equals(urlCategoryName.toUpperCase())) {
 				result = false;
 			}
-			
+
 			this.getStoreCategoryBackLink().click();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
 	}
-	
+
 	public boolean verifyStoreMenuLeftURLPage() {
 		boolean result = true;
-		
+
 		try {
 			WebElement holder = this.getStoreMenuLeft();
 			List<WebElement> links = holder.findElements(By.tagName("a"));
-			
+
 			if (links.size() == 0) {
 				result = false;
 			}
-			
-			for (int i=0; i<links.size(); i++) {
+
+			for (int i = 0; i < links.size(); i++) {
 				boolean validPage = this.validMenuNavigation(links.get(i));
-				
+
 				if (validPage == false) {
 					result = false;
 				}
-				
+
 				holder = this.getStoreMenuLeft();
 				links = holder.findElements(By.tagName("a"));
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
 	}
-	
+
 	public boolean verifyStoreMenuTopURLPage() {
 		boolean result = true;
-		
+
 		try {
 			WebElement holder = this.getStoreMenuTop();
 			List<WebElement> links = holder.findElements(By.tagName("a"));
-			
+
 			if (links.size() == 0) {
 				result = false;
 			}
-			
-			for (int i=0; i<links.size(); i++) {
+
+			for (int i = 0; i < links.size(); i++) {
 				boolean validPage = this.validMenuNavigation(links.get(i));
-				
+
 				if (validPage == false) {
 					result = false;
 				}
-				
+
 				holder = this.getStoreMenuTop();
 				links = holder.findElements(By.tagName("a"));
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
 	}
-	
+
 	public boolean verifyStoreMenuImgURLPage() {
 		boolean result = true;
-		
+
 		try {
 			WebElement holder = this.getStoreMenuImg();
 			List<WebElement> links = holder.findElements(By.tagName("area"));
-			
+
 			if (links.size() == 0) {
 				result = false;
 			}
-			
-			for (int i=0; i<links.size(); i++) {
+
+			for (int i = 0; i < links.size(); i++) {
 				boolean validPage = this.validMenuNavigation(links.get(i));
-				
+
 				if (validPage == false) {
 					result = false;
 				}
-				
+
 				holder = this.getStoreMenuLeft();
 				links = holder.findElements(By.tagName("a"));
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
 	}
-	
+
 	public boolean verifySignInPage() {
 		boolean result = true;
-		
+
 		try {
 			this.getStoreSignIn().click();
-			
+
 			if (!this.getStoreLoginText().getText().contains("Please enter your username and password.")) {
 				result = false;
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
 	}
-	
+
 	public int verifyURLStatus(String urlString) {
 		int status = 404;
 		try {
@@ -244,8 +237,7 @@ public class PetStoreMenuPage extends Page {
 	}
 
 	public String getLastWordAfterCharacter(String str, String ch) {
-		String strArr[] = str.split(ch); 
+		String strArr[] = str.split(ch);
 		return strArr[strArr.length - 1];
 	}
 }
-

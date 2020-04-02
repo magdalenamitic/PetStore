@@ -61,63 +61,60 @@ public class CartPage extends Page {
 		boolean result = false;
 		try {
 			WebElement holder = this.driver.findElement(By.xpath(this.locators.getProperty("item_cart_table")));
-			List<WebElement> trows =  holder.findElements(By.tagName("tr"));
-			
+			List<WebElement> trows = holder.findElements(By.tagName("tr"));
+
 			double subTotal = 0;
-			for(int i = 1; i < trows.size()-1; i++) {
+			for (int i = 1; i < trows.size() - 1; i++) {
 				WebElement totalCost = trows.get(i).findElement(By.xpath("td[7]"));
-				
+
 				DecimalFormat format = new DecimalFormat("$#.##");
 				double totalCostNum = format.parse(totalCost.getText()).doubleValue();
-				
+
 				subTotal += totalCostNum;
 			}
 			String priceText = String.format("%.2f", subTotal);
-			
-			WebElement lastRowText = trows.get(trows.size()-1).findElement(By.xpath("td[1]"));
-			if(lastRowText.getText().contains(String.valueOf(priceText))) {
+
+			WebElement lastRowText = trows.get(trows.size() - 1).findElement(By.xpath("td[1]"));
+			if (lastRowText.getText().contains(String.valueOf(priceText))) {
 				result = true;
 			}
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
 		return result;
 	}
-	
+
 	public boolean verifyItemsSubTotal() {
 		boolean result = true;
 		try {
 			WebElement holder = this.driver.findElement(By.xpath(this.locators.getProperty("item_cart_table")));
-			List<WebElement> trows =  holder.findElements(By.tagName("tr"));
-			
-			double totalPrice = 0;
-			for(int i = 1; i < trows.size()-1; i++) {
+			List<WebElement> trows = holder.findElements(By.tagName("tr"));
+
+			for (int i = 1; i < trows.size() - 1; i++) {
 				WebElement totalCost = trows.get(i).findElement(By.xpath("td[7]"));
-				WebElement Quantity =  trows.get(i).findElement(By.xpath("td[5]/input"));
+				WebElement Quantity = trows.get(i).findElement(By.xpath("td[5]/input"));
 				WebElement ListPrice = trows.get(i).findElement(By.xpath("td[6]"));
-				
+
 				DecimalFormat format = new DecimalFormat("$#.##");
 				double totalCostNum = format.parse(totalCost.getText()).doubleValue();
 				double QuantityNum = Double.parseDouble(Quantity.getAttribute("value"));
 				double ListPriceNum = format.parse(ListPrice.getText()).doubleValue();
-				
-				if(Math.round(QuantityNum*ListPriceNum) != Math.round(totalCostNum)) {
+
+				if (Math.round(QuantityNum * ListPriceNum) != Math.round(totalCostNum)) {
 					result = false;
 				}
 			}
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
-				
+
 	}
-	
+
 	public void clearCart() {
 		this.driver.navigate().to(this.locators.getProperty("item_cart_url"));
 		this.driver.manage().deleteAllCookies();
 	}
-	
+
 }

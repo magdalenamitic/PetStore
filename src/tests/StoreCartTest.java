@@ -26,14 +26,14 @@ import pages.StoreItemPage;
 import utils.ExcelUtils;
 
 public class StoreCartTest extends TestTemplate {
-	@Test (priority=1)
+	@Test(priority = 1)
 	public void storeAddToCartTest() throws InterruptedException {
 		StoreItemPage sip = new StoreItemPage(driver, locators, waiter);
 		CartPage cp = new CartPage(driver, locators, waiter);
 		SoftAssert sa = new SoftAssert();
 
 		cp.clearCart();
-		
+
 		ExcelUtils eu = new ExcelUtils();
 		eu.setExcell(this.locators.getProperty("xlsx_data_source"));
 		eu.setWorkSheet(0);
@@ -52,13 +52,13 @@ public class StoreCartTest extends TestTemplate {
 		sa.assertAll();
 	}
 
-	@Test (priority=2)
+	@Test(priority = 2)
 	public void storeCookieCartTest() throws InterruptedException {
 		StoreItemPage sip = new StoreItemPage(driver, locators, waiter);
 		CartPage cp = new CartPage(driver, locators, waiter);
 
 		cp.clearCart();
-		
+
 		ExcelUtils eu = new ExcelUtils();
 		eu.setExcell(this.locators.getProperty("xlsx_data_source"));
 		eu.setWorkSheet(0);
@@ -76,15 +76,14 @@ public class StoreCartTest extends TestTemplate {
 		Assert.assertTrue(cp.verifyEmptyCart(), "Failed 'verifyEmptyCart'");
 	}
 
-
-	@Test (priority=3)
+	@Test(priority = 3)
 	public void storeCartPriceTest() throws InterruptedException, ParseException {
 		StoreItemPage sip = new StoreItemPage(driver, locators, waiter);
-        CartPage cp = new CartPage(driver, locators, waiter);
-		
-        cp.clearCart();
-        
-        ExcelUtils eu = new ExcelUtils();
+		CartPage cp = new CartPage(driver, locators, waiter);
+
+		cp.clearCart();
+
+		ExcelUtils eu = new ExcelUtils();
 		eu.setExcell(this.locators.getProperty("xlsx_data_source"));
 		eu.setWorkSheet(0);
 
@@ -96,18 +95,17 @@ public class StoreCartTest extends TestTemplate {
 
 		cp.clickCartLink();
 		Assert.assertTrue(cp.verifyCartPrice(), "Failed 'verifyCartPrice'");
-	
+
 	}
-	
-	
-	@Test (priority=4)
+
+	@Test(priority = 4)
 	public void storeCartSubTotalTest() throws InterruptedException, ParseException {
 		StoreItemPage sip = new StoreItemPage(driver, locators, waiter);
-        CartPage cp = new CartPage(driver, locators, waiter);
-		
-        cp.clearCart();
-        
-        ExcelUtils eu = new ExcelUtils();
+		CartPage cp = new CartPage(driver, locators, waiter);
+
+		cp.clearCart();
+
+		ExcelUtils eu = new ExcelUtils();
 		eu.setExcell(this.locators.getProperty("xlsx_data_source"));
 		eu.setWorkSheet(0);
 

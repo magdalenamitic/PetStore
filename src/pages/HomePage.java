@@ -9,31 +9,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends Page {
 	public HomePage(WebDriver driver, Properties locators, WebDriverWait waiter) {
-		super(driver,locators,waiter);
+		super(driver, locators, waiter);
 	}
 
 	public WebElement getStoreLink() {
 		return this.driver.findElement(By.xpath(this.locators.getProperty("home_page_store_link")));
 	}
-	
+
 	public void clickStoreLink() {
 		this.getStoreLink().click();
 	}
-	
+
 	public WebElement getStoreMenuLeft() {
 		return this.driver.findElement(By.xpath(this.locators.getProperty("store_menu_left_holder")));
 	}
-	
+
 	public boolean enteredStore() {
 		boolean result = true;
-		
+
 		try {
 			this.getStoreMenuLeft();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			result = false;
 		}
-		
+
 		return result;
 	}
 }

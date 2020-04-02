@@ -23,5 +23,4 @@ public class StoreItemPage extends Page {
 		this.getAddToCart().click();
 	}
 
-	
 }
